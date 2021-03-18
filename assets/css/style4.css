@@ -1,0 +1,36 @@
+#firstcontainer {
+    background-color: black;
+}
+
+#one,
+#two,
+#three,
+#fourth {
+    float: left;
+    color: red;
+    font-size: 3em;
+    margin: -10px 0 0 0;
+    padding-left: -10px;
+    background-color: white;
+    border: 1px solid red;
+}
+
+#one {
+    float: left;
+    color: red;
+    font-size: 3em;
+    margin: -10px 0 0 0;
+    padding-left: -10px;
+    background-color: white;
+    border: 1px solid red;
+}
+
+.mytitle {
+    font-size: 0.7em;
+    color: red;
+}
+
+.abstact {
+    font-size: 0.5em;
+    color: black;
+}

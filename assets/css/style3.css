@@ -1,0 +1,481 @@
+/*************** COULEURS ****************
+* #090f64;
+* #817e7e;
+* #444444;
+* #838080e7;
+*****************************************/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #444444;
+    padding: 0;
+}
+
+.shadow {
+    box-shadow: 0px 0px 3px 1px hsla(0, 0%, 47%, 0.45)
+}
+
+hr {
+    border: 1px solid #817e7e;
+}
+
+#header {
+    /* DEBUT #header */
+    width: 100%;
+    height: 100px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+    border-bottom: 4px solid #817e7e;
+    padding: 7px 0 7px 0;
+    z-index: 2;
+    background-image: url(../../images/bg.png);
+}
+
+
+/********************** MENU DE NAVIGATION *********************************/
+
+#header .navbars {
+    float: left;
+    width: 35px;
+    height: auto;
+    margin: 0 5px;
+    cursor: pointer;
+    position: fixed;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    float: left;
+    width: 35px;
+    height: 5px;
+    margin: 3px 0;
+    transition: 0.4s;
+    background-color: #817e7e;
+}
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#header .menu {
+    width: 250px;
+    height: auto;
+    margin: 0 50px;
+    padding: 5px 0 5px 0;
+    /* border: 1px solid #817e7e; */
+    display: none;
+    position: relative;
+    position: fixed;
+    box-shadow: 0px 0px 3px 1px hsla(0, 0%, 47%, 0.45);
+    background-color: #FFFFFF;
+}
+
+#header .menu .nom {
+    background-color: transparent;
+}
+
+#header .menu .nom>span {
+    line-height: normal;
+    padding-top: 5px;
+    font: bold 30px Impact, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 #FFFFFF, 4px 4px 0 #000000;
+}
+
+#header .menu .menuimg {
+    width: auto;
+    height: 100px;
+    text-align: center;
+    padding-bottom: 1px;
+    /* border-bottom: 4px solid #FFFFFF; */
+}
+
+#header .menu .menuimg .monimage {
+    border-radius: 50%;
+    text-align: center;
+}
+
+#header .menu ul {
+    list-style: none;
+    float: left;
+}
+
+#header .menu ul li {
+    width: 233px;
+    list-style: none;
+    margin-left: -38px;
+    padding: 5px;
+    /* border: 1px solid #817e7e; */
+}
+
+#header .menu ul li a {
+    text-decoration: none;
+    width: 233px;
+    list-style: none;
+    display: inline-flex;
+    color: #817e7e;
+    font-size: 20px;
+}
+
+#header .menu ul li a:hover {
+    color: #090f64;
+}
+
+
+/**************************************************** FIN MENU DE NAVIGATION *********************************/
+
+#header .gauche {
+    /* DEBUT  .gauche */
+    float: left;
+    margin: 0 0px;
+    display: inline-flex;
+    width: 300px;
+    height: auto;
+    display: none;
+}
+
+
+/* #header .gauche .gauche1 {
+    /* div .gauche1 contenant la photo de profile */
+
+
+/* border: 1px solid red; 
+} 
+*/
+
+#header .gauche .gauche1 img {
+    /* DEBUT  .gauche .gauche1 img */
+    border-radius: 50%;
+}
+
+#header .gauche .gauche2 {
+    /* DEBUT  .gauche2 */
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    margin-top: 24px;
+}
+
+#header .gauche .gauche2>span {
+    /* #header .gauche .gauche2 span */
+    line-height: normal;
+    padding-top: 5px;
+    font: bold 30px Impact, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 #FFFFFF, 4px 4px 0 #000000;
+}
+
+#header .droite {
+    float: right;
+    width: 700px;
+    height: auto;
+    margin: 0 10px;
+}
+
+#header .droite .droite-a {
+    /* #header .droite .droite-a */
+    width: 690px;
+    display: inline-flex;
+    padding-right: 0;
+    margin: 8px 10px 0 0;
+    font-size: 16px;
+    color: #817e7e;
+}
+
+#header .droite .droite-a .droite1,
+#header .droite .droite-a .droite2,
+#header .droite .droite-a .droite3 {
+    /* #header .droite-a .droite1, #header .droite-a .droite2, #header .droite-a .droite3 */
+    font-size: 15px;
+    width: 220px;
+    text-align: center;
+}
+
+#header .droite .droite-b {
+    /* #header .droite-b liens de navigation */
+    width: auto;
+    font-size: 16px;
+    margin: 30px 10px;
+}
+
+#header .droite .droite-b ul {
+    /* #header .droite-b ul */
+    display: inline;
+    list-style: none;
+}
+
+#header .droite .droite-b ul li {
+    /* #header .droite-b ul li */
+    float: left;
+    width: auto;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    display: block;
+    margin-left: 30px;
+}
+
+#header .droite .droite-b ul li a {
+    /* #header .droite-b ul li a */
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    color: #0b1f79e7;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#content {
+    /*.#content */
+    height: auto;
+    padding: 10px 20px 60px 20px;
+    border-bottom: 4px solid #817e7e;
+    z-index: 1;
+    background-image: url(../../images/bg.png);
+}
+
+#content .who {
+    /*.who qui suis-je div contenant les infos*/
+    width: 90%;
+    margin-left: 50px;
+    padding-bottom: 40px;
+}
+
+#content .who .mytitle {
+    /* .titre qui suis-je */
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1em;
+    color: #817e7e;
+}
+
+#content .who .resume {
+    /* .resume détails */
+    text-align: justify;
+    column-count: 3;
+    margin-top: 20px;
+}
+
+#content .skills {
+    /* .skillsimg images compétences */
+    margin-top: 30px;
+    height: 70vh;
+    /* 1000px */
+    background: url('../../images/f.jpg') fixed center;
+    padding-bottom: 40px;
+}
+
+#content .skills .skillsimg {
+    /* .skillsimg images compétences */
+    display: inline-flex;
+    margin: 50px 3.5%;
+    color: #FFFFFF;
+    border-radius: 20px;
+    transition: .3s ease-in-out;
+    text-shadow: #bbe5ff 0 -1px 0, #0098f8 1px 1px 0, #018de6 2px 2px 0, #006fb5 3px 3px 0, #005386 4px 4px 0, #004874 5px 5px 0, #333 5px 5px 10px;
+}
+
+#content .skills .skillsimg:hover {
+    /* .skillsimg:hover images compétences */
+    transform: scale(1.15);
+    color: #FFFF00;
+    transition: .5s ease-in-out;
+}
+
+#content .title-infos {
+    /* .title-info titre skills */
+    text-transform: uppercase;
+    font-size: 1em;
+    text-align: center;
+    color: #817e7e;
+}
+
+#content .title-infos a {
+    /* .title-info Ondéfinit la couleur de chevrons de navigation */
+    color: #817e7e;
+}
+
+#content .skills .competences ul {
+    /* Retrait des puces */
+    list-style-type: circle;
+    color: #FFFFFF;
+}
+
+#content .works {
+    /* positionnement des blocs works*/
+    height: 450px;
+}
+
+#content .works .a {
+    /* positionnement des blocs works*/
+    display: inline-block;
+    color: #817e7e;
+    margin: 10px 3.55px;
+    padding: 5px 5px 0 10px;
+    width: 47.80%;
+    height: 200px;
+    border: 1px solid rgba(129, 126, 126, 0.294);
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+#content .works .a .titre-1 {
+    /* positionnement des titres works */
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#content .training {
+    /* .skillsimg images compétences */
+    height: 70vh;
+    margin-top: 30px;
+    background: url('../../images/ferrari_8.jpg') fixed center;
+    padding-bottom: 40px;
+}
+
+#content .training .b {
+    /* positionnement des blocs training*/
+    color: #FFFFFF;
+    margin: 10px 290px;
+    border: 1px solid rgba(129, 126, 126, 0.294);
+    background-color: #ffffff5b;
+    text-align: center;
+}
+
+#content .training .b .titre-1 {
+    /* positionnement du titre training */
+    color: #090f64;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#content .hobbies {
+    /* positionnement des blocs hobbies */
+    padding: 5px 40px 0 40px;
+}
+
+#content .hobbies .c {
+    text-align: justify;
+    column-count: 3;
+    margin-top: 20px;
+}
+
+fieldset {
+    /* fieldset */
+    text-align: center;
+    border-top: 4px solid #817e7e;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    color: #817e7e;
+}
+
+#footer {
+    /* #footer */
+    float: left;
+    width: 100%;
+    height: auto;
+    padding: 10px 0 15px 0;
+    background: #FFFFFF url(../../images/bg.png);
+}
+
+#footer .footer-cadre {
+    /* #footer */
+    float: left;
+    width: 100%;
+}
+
+#footer .footer-cadre .footer-cadre-a {
+    /* #footer .footer-cadre .footer-cadre-a */
+    height: auto;
+    float: left;
+}
+
+#footer .footer-cadre .footer-cadre-a h3 {
+    /* titre en majuscule */
+    text-transform: uppercase;
+    color: #0b1f79e7;
+    margin-left: 10px;
+}
+
+#footer .footer-cadre .footer-cadre-a ul {
+    /* On cache les puces */
+    display: block;
+    list-style: none;
+    padding-left: 5px;
+}
+
+#footer .footer-cadre .footer-cadre-a ul li {
+    /* On definit le style pour les listes */
+    width: 200px;
+    display: block;
+    border-bottom: 1px solid #817e7e48;
+    padding: 5px 0 8px 5px;
+    color: #817e7e;
+}
+
+#footer .footer-cadre .footer-cadre-a ul li:last-child {
+    /* On donne un style uniquement à la  
+     * bordure bottom de la la liste dont li 
+     */
+    border-bottom: none;
+}
+
+#footer .footer-cadre .footer-cadre-a ul li a {
+    /* On cache le soulignement des liens. 
+     * On donne une couleur grise aux liens
+     */
+    text-decoration: none;
+    color: #817e7e;
+}
+
+#footer .footer-cadre .footer-cadre-a h3 {
+    /* On definit un style pour l'entete des liens */
+    width: 240px;
+    margin-left: 66px;
+}
+
+#footer hr {
+    background-color: #817e7e5e;
+}
+
+#footer .mention {
+    float: right;
+    color: #817e7e;
+    margin-right: 60px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#footer .mention a {
+    text-decoration: none;
+    color: #090f64;
+    text-align: center;
+}
+
+#btnscrolltop {
+    width: 31px;
+    height: 31px;
+    right: 2.47%;
+    padding: 0;
+    bottom: 5px;
+    margin-top: 4px;
+    cursor: pointer;
+    border: none;
+    position: fixed;
+    display: block;
+}
+
+#btnscrolltop a {
+    color: #817e7e;
+}
