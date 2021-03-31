@@ -16,11 +16,12 @@ $(document).ready(function () {
   $('body').append('<div id="btnscrolltop"><a href="index.html#top" title="Haut de page" ><i class="fas fa-chevron-circle-up fa-2x"></i></a></div>');
   $(window).scroll(function () {
     // déclaration de la variable poScroll ( position du bouton retour en haut de page)
+    let posScroll;
     posScroll = $(document).scrollTop();
     /* Condition ternaire.
-     * Lorsque le défilement va en dessous de 250px le bouton haut de page apparait.
+     * Lorsque le défilement va en dessous de Xpx le bouton haut de page apparait.
      * dans le cas contraire le bouton devient invisible.
-     * cette animation s'effectue avec une durée de 600ms
+     * cette animation s'effectue avec une durée de Xms
      * ce qui donne une certaine fluidité qaund on click sur le bouton.
      */
 
@@ -32,7 +33,7 @@ $(document).ready(function () {
        * On fait une animation fluide sur le défilement de la page vers le haut */
       $('html, body').animate({
         scrollTop: 0
-      }, 1000);
+      }, 800);
       return false;
     });
     $('html, body').bind("scroll mousedown DOMMouseScroll mousewheel keyup", function () {
@@ -69,7 +70,7 @@ $(function () {
 //     $(window).scroll(function() {
 //         // déclaration de la variable poScroll)
 //         header = $(document).scrollTop();
-//         /* Lorsque le défilement va en dessous de 50px le header apparaait.
+//         /* Lorsque le défilement va en dessous de 50px le header apparait.
 //          * dans le cas contraire il devient invisible.
 //          */
 //         // header > 50 ? $('#header').fadeIn(1000) : $('#header').fadeOut(1000);
@@ -96,11 +97,11 @@ $(function () {
 // });
 // $(document).ready(function() {
 //     $(window).on('scroll', function() {
-//         let elmt = $('.from-left, .from-right');
-//         let topImg = $('.from-left, .from-right').offset().top;
-//         let scroll = $(window).scrollTop();
+//         const elmt = $('.from-left, .from-right');
+//         const topImg = $('.from-left, .from-right').offset().top;
+//         const scroll = $(window).scrollTop();
 //         $(elmt).each(function() {
-//             let topimg = $(this).offset().top - 300;
+//             const topimg = $(this).offset().top - 300;
 //             if (topImg < scroll) {
 //                 // $(this).fadeIn('slow');
 //                 $(this).css("transform", "translate(0, 0)");
@@ -109,6 +110,11 @@ $(function () {
 //         })
 //     });
 // });
+// ON DESACTIVE L'AUTOCOMPconstION DU FORMULAIRE
+
+$(document).ready(function () {
+  $('form').attr('autocompconste', 'off');
+}); // Apparition du cadre login
 
 $(document).ready(function () {
   $('#user').click(function () {
@@ -121,15 +127,123 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#aide").click(function () {
-    $("#instructions").toggle(800);
+    $("#instructions").toggle();
   });
-});
+}); // Apparition des tooltip
+
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
-}); // FIN TOOLTIP
+}); // Carousel
 
 $(document).ready(function () {
   $('.carousel').carousel({
     interval: 4000
   });
-}); // FIN CAROUSEL
+}); // CONTROLLE DU FORMULAIRE DE CONNEXION ET D'ENREGISTREMENT
+
+function isEmail(email) {
+  // LA FONCTION isEmail SERT UNIQUEMENT A VERIFIER SI UNE  
+  // ELECTRONIQUE EST VALIDE. SI ELLE EST BONNE LA FONCTION RETURNE VRAI
+  // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
+  var VerifyEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
+  return VerifyEmail.test(email);
+}
+
+function ismypwd(passe) {
+  // LA FONCTION ismypwd SERT UNIQUEMENT A VERIFIER  
+  // UN MOT DE PASSE. LE MOT DE PASSE DOIT CONTENIR AU MINIMUM 
+  // 7 CARACTERES UNE constTRE MAJUSCULE, MINUSCULE, UN CHIFFRE
+  // ET UN CARACTERE SPECIAL !, @, #, $, %,^, & ou *
+  //  SI ELLE EST BONNE LA FONCTION RETURNE VRAI
+  // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
+  let Verifymypwd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+  return Verifymypwd.test(passe);
+}
+
+function isPhone(phone) {
+  // LA FONCTION isPhone SERT UNIQUEMENT A VERIFIER  
+  // UN NUMERO DE TELEPHONE. LE NUMERO DE TELEPHONE DOIT ETRE 
+  // FORMAT: ## ## ## ## ## OU AVEC L'INDICATIF DU PAYS ## ## ## ## ## ##
+  //  SI ELLE EST BONNE LA FONCTION RETURNE VRAI
+  // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
+  let VerifyPhone = /(?:\d{2}|\+\d{2}[ ]\d)([- ])\d{2}\1\d{2}\1\d{2}\1\d{2}/;
+  return VerifyPhone.test(phone);
+} // function isLogin(login) {
+//     VerifyLogin = /^[a-zA-Z0-9]{7,15}$/;
+//     return VerifyLogin.test(login);
+// }
+// Déclaration des variables
+
+
+var btnlogin = document.getElementById('btnlogin');
+var yourlogin = document.getElementById('yourlogin');
+var loginError = document.getElementById('loginError');
+var mypwd = document.getElementById('mypwd ');
+var passeError = document.getElementById('passeError');
+
+if (btnlogin) {
+  btnlogin.addEventListener('click', Connexion, false);
+}
+
+function Connexion(event) {
+  if (yourlogin.validity.valueMissing) {
+    event.preventDefault();
+    loginError.textContent = '* est requis';
+    loginError.style.color = 'red';
+    yourlogin.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+    yourlogin.focus();
+    return false;
+  } else if (yourlogin.value.length < 2) {
+    event.preventDefault();
+    loginError.textContent = '* doit comporter au minimum 2 caractères.';
+    loginError.style.color = 'red';
+    yourlogin.style.border = '2px solid rgba(255, 000, 000, 0.5)';
+    yourlogin.focus();
+    return false;
+  }
+
+  loginError.textContent = '';
+  yourlogin.style.border = '';
+
+  if (mypwd.value === ' ') {
+    event.preventDefault();
+    passeError.textContent = "* est requis";
+    passeError.style.color = "red";
+    mypwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+    mypwd.focus();
+    return false;
+  } else if (passe.value.length < 6) {
+    event.preventDefault();
+    passeError.textContent = "* doit comporter au minimum 6 caractères";
+    passeError.style.color = "red";
+    mypwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+    mypwd.focus();
+    return false;
+  }
+
+  passeError.textContent = '';
+  mypwd.style.border = '';
+} //yourlogin
+// loginError
+// $(document).ready(function() {
+//     $("#yourlogin").keyup(function(e) {
+//         if ($("#yourlogin").val == "") {
+//             e.preventDefault();
+//             $("#yourlogin").next("#loginError").show().text("Veuillez entrer un login valide.");
+//             $("#yourlogin").css({ "background-color": "rgba(255, 000 000, 0.1)" });
+//             $("#yourlogin").next("#loginError").css({ "color": "red" });
+//             return false;
+//         } else {
+//             $("#yourlogin").next("#loginError").hide().text();
+//             $("#yourlogin").show().css({ "background-color": "rgba(000,777,000, 0.1)" });
+//         }
+//     });
+// });
+// function VillageGreenSidebar_open() {
+//     document.getElementById("sidebar").style.display = "block";
+// }
+// function VillageGreenSidebar_close() {
+//     document.getElementById("sidebar").style.display = "none";
+// }unction VillageGreenSidebar_close() {
+//     document.getElementById("sidebar").style.display = "none";
+// }
