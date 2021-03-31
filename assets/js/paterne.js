@@ -2,8 +2,7 @@
 
 $(document).ready(function() {
     $('#navbars').click(function() {
-        $('#menu').slideToggle(600);
-        $('#menu').addClass('flash');
+        $(`#menu`).toggle(600);
     });
 });
 
@@ -48,11 +47,10 @@ $(document).ready(function() {
  *                            FIN SECTION BOUTON HAUT DE PAGE                                               *   
  ************************************************************************************************************/
 
-
 // défilement fluide sur les liens HTML vers les ancres avec une durée de 1500 ms
 $(function() {
     $("a[href*='#']:not([href='#'])").click(function() {
-        if (location.hostname == this.hostname && this.pathname.replace(/^\//, "")) {
+        if (location.hostname === this.hostname && this.pathname.replace(/^\//, "")) {
             var anchor = $(this.hash);
             anchor = anchor.length ? anchor : $("[name=" + this.hash.slice(1) + "]");
 
@@ -72,7 +70,7 @@ $(function() {
 //     $(window).scroll(function() {
 //         // déclaration de la variable poScroll)
 //         header = $(document).scrollTop();
-//         /* Lorsque le défilement va en dessous de 50px le header apparaait.
+//         /* Lorsque le défilement va en dessous de 50px le header apparait.
 //          * dans le cas contraire il devient invisible.
 //          */
 //         // header > 50 ? $('#header').fadeIn(1000) : $('#header').fadeOut(1000);
@@ -101,12 +99,12 @@ $(function() {
 
 // $(document).ready(function() {
 //     $(window).on('scroll', function() {
-//         let elmt = $('.from-left, .from-right');
-//         let topImg = $('.from-left, .from-right').offset().top;
-//         let scroll = $(window).scrollTop();
+//         const elmt = $('.from-left, .from-right');
+//         const topImg = $('.from-left, .from-right').offset().top;
+//         const scroll = $(window).scrollTop();
 
 //         $(elmt).each(function() {
-//             let topimg = $(this).offset().top - 300;
+//             const topimg = $(this).offset().top - 300;
 
 //             if (topImg < scroll) {
 //                 // $(this).fadeIn('slow');
@@ -119,14 +117,14 @@ $(function() {
 
 // ON DESACTIVE L'AUTOCOMPLETION DU FORMULAIRE
 
-$(document).ready(function () {
-    $('form').attr('autocomplete', 'off');
+$(document).ready(function() {
+    $('form').attr('autocompconste', 'off');
 });
 
-
+// Apparition du cadre login
 $(document).ready(function() {
     $('#user').click(function() {
-        $('#cadrelogin').slideDown(1000);
+        $('#cadrelogin').fadeToggle('slow');
     });
 });
 /************************************************************************************************************
@@ -135,44 +133,42 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $("#aide").click(function() {
-        $("#instructions").toggle(800);
+        $("#instructions").toggle();
     });
 });
 
-
+// Apparition des tooltip
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip()
 });
-// FIN TOOLTIP
 
+// Carousel
 $(document).ready(function() {
     $('.carousel').carousel({
         interval: 4000
     });
 });
 
-// FIN CAROUSEL
-
-// ON CONTROLLE LE FORMULAIRE DE CONNEXION ET D'ENREGISTREMENT
+// CONTROLLE DU FORMULAIRE DE CONNEXION ET D'ENREGISTREMENT
 
 
 function isEmail(email) {
     // LA FONCTION isEmail SERT UNIQUEMENT A VERIFIER SI UNE  
     // ELECTRONIQUE EST VALIDE. SI ELLE EST BONNE LA FONCTION RETURNE VRAI
     // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
-    let VerifyEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
+    const VerifyEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
     return VerifyEmail.test(email);
 }
 
-function isPassword(passe) {
-    // LA FONCTION isPassword SERT UNIQUEMENT A VERIFIER  
+function ismypwd(passe) {
+    // LA FONCTION ismypwd SERT UNIQUEMENT A VERIFIER  
     // UN MOT DE PASSE. LE MOT DE PASSE DOIT CONTENIR AU MINIMUM 
-    // 7 CARACTERES UNE LETTRE MAJUSCULE, MINUSCULE, UN CHIFFRE
+    // 7 CARACTERES UNE constTRE MAJUSCULE, MINUSCULE, UN CHIFFRE
     // ET UN CARACTERE SPECIAL !, @, #, $, %,^, & ou *
     //  SI ELLE EST BONNE LA FONCTION RETURNE VRAI
     // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
-    VerifyPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
-    return VerifyPassword.test(passe);
+    Verifymypwd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+    return Verifymypwd.test(passe);
 }
 
 function isPhone(phone) {
@@ -185,83 +181,88 @@ function isPhone(phone) {
     return VerifyPhone.test(phone);
 }
 
-function isLogin(login) {
-    VerifyLogin = /^[a-zA-Z0-9]{7,15}$/;
-    return VerifyLogin.test(login);
+// function isLogin(login) {
+//     VerifyLogin = /^[a-zA-Z0-9]{7,15}$/;
+//     return VerifyLogin.test(login);
+// }
+
+// Déclaration des variables
+
+const btnlogin = document.getElementById('btnlogin');
+const yourlogin = document.getElementById('yourlogin');
+const loginError = document.getElementById('loginError');
+const mypwd = document.getElementById('mypwd ');
+const passeError = document.getElementById('passeError');
+
+if (btnlogin) {
+    btnlogin.addEventListener('click', Connexion, false);
 }
 
-// LA FONCTION VerifyLogin VERIFIE SI TOUS LES CHAMPS SONT VALIDES
-const VerifyLogin = () => {
-let email = document.getElementById('email');
-let passe = document.getElementByid('passe');
-
-// On déclare les variables pour afficher les erreurs
-let loginError = document.getElementById('loginError');
-let passeError = document.getElementById('passeError');
-
-    if (yourlogin.value === "") {
+function Connexion(event) {
+    if (yourlogin.validity.valueMissing) {
         event.preventDefault();
-        loginError.textContent = "* Le champ login est requis";
-        loginError.style.color = "red";
-        yourlogin.style.backgroundColor = "rgba(255, 000, 000, 0.1)";
+        loginError.textContent = '* est requis';
+        loginError.style.color = 'red';
+        yourlogin.style.border = "2px solid rgba(255, 000, 000, 0.5)";
         yourlogin.focus();
         return false;
-    } else if (isLogin(yourlogin)) {
+    } else if (yourlogin.value.length < 2) {
         event.preventDefault();
-        loginError.textContent = "* Le login saisi est invalide. 1 Lettre miniscule et majuscule, 7 caractères mini.";
-        loginError.style.color = "red";
-        yourlogin.style.backgroundColor = "rgba(255, 000, 000, 0.1)";
+        loginError.textContent = '* doit comporter au minimum 2 caractères.';
+        loginError.style.color = 'red';
+        yourlogin.style.border = '2px solid rgba(255, 000, 000, 0.5)';
         yourlogin.focus();
         return false;
     }
-    loginError.textContent = "";
-    loginError.style.color = "";
-    yourlogin.style.backgroundColor = "rgba(000, 777, 000,0.1)";
+    loginError.textContent = '';
+    yourlogin.style.border = '';
 
-    if (passe.validity.valueMissing) {
+
+    if (mypwd.validity.valueMissing) {
         event.preventDefault();
-        passeError.textContent.fade("slow") = "* Le champ mot de passe est requis";
+        passeError.textContent = "* est requis";
         passeError.style.color = "red";
-        passe.style.backgroundColor = "rgba(255, 000, 000, 0.1)";
-        passe.focus();
+        mypwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+        mypwd.focus();
         return false;
-    } else if (passe.value.length < 7) {
+    } else if (passe.value.length < 6) {
         event.preventDefault();
-        passeError.textContent = "* Le mot de passe saisi est incorrect";
+        passeError.textContent = "* doit comporter au minimum 6 caractères";
         passeError.style.color = "red";
-        passe.style.backgroundColor = "rgba(255, 000, 000, 0.1)";
-        passe.focus();
+        mypwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+        mypwd.focus();
         return false;
     }
-    passeError.textContent = "";
-    passeError.style.color = "";
-    passe.style.backgroundColor = "rgba(000, 777, 000,0.1)";
+    passeError.textContent = '';
+    mypwd.style.border = '';
 }
 
 
-// yourlogin
+//yourlogin
 // loginError
 
-$(document).ready(function() {
-    $("#yourlogin").keyup(function(e) {
-        if ($("#yourlogin").val == "") {
-            e.preventDefault();
-            $("#yourlogin").next("#loginError").show().text("Veuillez entrer un login valide.");
-            $("#yourlogin").css({ "background-color": "rgba(255, 000 000, 0.1)" });
-            $("#yourlogin").next("#loginError").css({ "color": "red" });
+// $(document).ready(function() {
+//     $("#yourlogin").keyup(function(e) {
+//         if ($("#yourlogin").val == "") {
+//             e.preventDefault();
+//             $("#yourlogin").next("#loginError").show().text("Veuillez entrer un login valide.");
+//             $("#yourlogin").css({ "background-color": "rgba(255, 000 000, 0.1)" });
+//             $("#yourlogin").next("#loginError").css({ "color": "red" });
 
-            return false;
-        } else {
-            $("#yourlogin").next("#loginError").hide().text();
-            $("#yourlogin").show().css({ "background-color": "rgba(000,777,000, 0.1)" });
-        }
-    });
-});
+//             return false;
+//         } else {
+//             $("#yourlogin").next("#loginError").hide().text();
+//             $("#yourlogin").show().css({ "background-color": "rgba(000,777,000, 0.1)" });
+//         }
+//     });
+// });
 
 
 // function VillageGreenSidebar_open() {
 //     document.getElementById("sidebar").style.display = "block";
 // }
 // function VillageGreenSidebar_close() {
+//     document.getElementById("sidebar").style.display = "none";
+// }unction VillageGreenSidebar_close() {
 //     document.getElementById("sidebar").style.display = "none";
 // }
