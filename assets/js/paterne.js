@@ -163,7 +163,7 @@ function isEmail(email) {
 function ismypwd(passe) {
     // LA FONCTION ismypwd SERT UNIQUEMENT A VERIFIER  
     // UN MOT DE PASSE. LE MOT DE PASSE DOIT CONTENIR AU MINIMUM 
-    // 7 CARACTERES UNE constTRE MAJUSCULE, MINUSCULE, UN CHIFFRE
+    // 7 CARACTERES UNE LETTRE MAJUSCULE, MINUSCULE, UN CHIFFRE
     // ET UN CARACTERE SPECIAL !, @, #, $, %,^, & ou *
     //  SI ELLE EST BONNE LA FONCTION RETURNE VRAI
     // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
@@ -188,27 +188,28 @@ function isPhone(phone) {
 
 // Déclaration des variables
 
-const btnlogin = document.getElementById('btnlogin');
+const connexion = document.getElementById('connexion');
 const yourlogin = document.getElementById('yourlogin');
-const loginError = document.getElementById('loginError');
 const mypwd = document.getElementById('mypwd ');
+const loginError = document.getElementById('loginError');
 const passeError = document.getElementById('passeError');
 
-if (btnlogin) {
-    btnlogin.addEventListener('click', Connexion, false);
+if (connexion) {
+    connexion.addEventListener('click', Connexion, false);
 }
 
+// Controle du formulaire de connexion
 function Connexion(event) {
     if (yourlogin.validity.valueMissing) {
         event.preventDefault();
-        loginError.textContent = '* est requis';
+        loginError.textContent = '* Veuillez renseigner votre login';
         loginError.style.color = 'red';
         yourlogin.style.border = "2px solid rgba(255, 000, 000, 0.5)";
         yourlogin.focus();
         return false;
     } else if (yourlogin.value.length < 2) {
         event.preventDefault();
-        loginError.textContent = '* doit comporter au minimum 2 caractères.';
+        loginError.textContent = '* Veuillez insérer 2 caractères minimum .';
         loginError.style.color = 'red';
         yourlogin.style.border = '2px solid rgba(255, 000, 000, 0.5)';
         yourlogin.focus();
@@ -220,14 +221,14 @@ function Connexion(event) {
 
     if (mypwd.validity.valueMissing) {
         event.preventDefault();
-        passeError.textContent = "* est requis";
+        passeError.textContent = "* veuillez renseigner votre password";
         passeError.style.color = "red";
         mypwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
         mypwd.focus();
         return false;
     } else if (passe.value.length < 6) {
         event.preventDefault();
-        passeError.textContent = "* doit comporter au minimum 6 caractères";
+        passeError.textContent = "* veuillez insérer 6 caractères minimum";
         passeError.style.color = "red";
         mypwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
         mypwd.focus();
@@ -235,6 +236,77 @@ function Connexion(event) {
     }
     passeError.textContent = '';
     mypwd.style.border = '';
+}
+
+
+// Controle du formulaire d'inscription
+const register = document.getElementById('register');
+const courriel = document.getElementById('courriel');
+const courrielError = document.getElementById('courrielError');
+const pwd = document.getElementById('pwd');
+const pwd2 = document.getElementById('pwd2');
+const pwdError = document.getElementById('pwdError');
+const pwd2Error = document.getElementById('pwd2Error');
+
+if (register) {
+    register.addEventListener('click', Inscription, false);
+}
+function Inscription(event) {
+    if (courriel.validity.valueMissing) {
+        event.preventDefault();
+        courrielError.textContent = '* Adresse électronique requise';
+        courrielError.style.color = 'red';
+        courriel.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+        courriel.focus();
+        return false;
+    }
+    //  else if (!courriel.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+    //     event.preventDefault();
+    //     courrielError.textContent = '* Adresse électronique invalide.';
+    //     courrielError.style.color = 'red';
+    //     courriel.style.border = '2px solid rgba(255, 000, 000, 0.5)';
+    //     courriel.focus();
+    //     return false;
+    // }
+    courrielError.textContent = '';
+    courriel.style.border = '';
+
+
+    if (pwd.validity.valueMissing) {
+        event.preventDefault();
+        pwdError.textContent = "* Veuillez saisir un mot de passe"
+        pwdError.style.color = "red";
+        pwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+        pwd.focus();
+        return false;
+    } else if (pwd.value.length < 6) {
+        event.preventDefault();
+        pwdError.textContent = "* Veuillez saisir 6 caractères minimum";
+        pwdError.style.color = "red";
+        pwd.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+        pwd.focus();
+        return false;
+    }
+    pwdError.textContent = '';
+    pwd.style.border = '';
+
+    if (pwd2.validity.valueMissing) {
+        event.preventDefault();
+        pwd2Error.textContent = "* Veuillez confirmer le mot de passe"
+        pwd2Error.style.color = "red";
+        pwd2.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+        pwd2.focus();
+        return false;
+    } else if (pwd2.value.length !== pwd.value.length) {
+        event.preventDefault();
+        pwd2Error.textContent = "* Les deux mots de passe ne correspondent pas";
+        pwd2Error.style.color = "red";
+        pwd2.style.border = "2px solid rgba(255, 000, 000, 0.5)";
+        pwd2.focus();
+        return false;
+    }
+    pwd2Error.textContent = '';
+    pwd2.style.border = '';
 }
 
 
