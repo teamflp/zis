@@ -2,6 +2,10 @@ body {
     padding-top: 70px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 
 /* #b {
     border: 1px solid #180202;
@@ -24,7 +28,7 @@ body {
 }
 
 #home {
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: bolder;
 }
 
@@ -82,7 +86,32 @@ sub {
 /* IMAGES THUMBNAIL */
 
 .thumbnail {
-    float: left
+    float: left;
+    aspect-ratio: auto 640 / 512;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.6s ease-in;
+    -webkit-transition: all 0.6s ease-in;
+    -moz-transition: all 0.6s ease-in;
+    -ms-transition: all 0.6s ease-in;
+    -o-transition: all 0.6s ease-in;
+}
+
+.hover-effet:hover {
+    transform: scale(1.1);
+    content: 'More details';
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
 }
 
 .a-04,
@@ -93,7 +122,7 @@ sub {
 }
 
 .icons {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 #caption-1,
@@ -139,7 +168,6 @@ sub {
     right: 0;
     padding: 0;
     bottom: 5px;
-    margin-top: px;
     cursor: pointer;
     border: none;
     position: fixed;
@@ -163,14 +191,14 @@ sub {
 }
 
 .slidein {
-    animation-iteration-count: slidein 1000ms infinite linear;
+    animation: slidein 0.5s linear;
     position: relative;
 }
 
 @keyframes slidein {
     from {
         left: 20%;
-        transform: scaleX(2, 0.5);
+        transform: scaleX(1);
     }
     to {
         left: 0;
@@ -214,7 +242,7 @@ sub {
     width: 94%;
     height: auto;
     padding: 10px 0 10px 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     box-shadow: 0px 0px 3px 1px hsla(0, 0%, 47%, 0.45);
@@ -318,7 +346,7 @@ legend {
 /* FIN SECTION LIENS FOOTER */
 
 #apps {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 
 #sociaux,
@@ -381,6 +409,22 @@ legend {
     vertical-align: middle;
     float: left;
 }
-
-
 /* FIN SECTION FOOTER */
+
+#nav-1{
+    padding: 15px 0 15px 0;
+}
+
+#nav-1-1{
+    color: #ffffff;
+}
+
+.network {
+    color: #FFFFFF;
+    margin-left: 10px;
+    font-size: 1em;
+}
+
+.network-link a {
+    color: #FFFFFF;
+}

@@ -6,9 +6,8 @@ $(document).ready(function() {
     });
 });
 
-
 /************************************************************************************************************
- *                            SECTION BOUTON HAUT DE PAGE                                                   *   
+ *                            SECTION BOUTON HAUT DE PAGE                                                   *
  ************************************************************************************************************/
 $(document).ready(function() {
     // On crée le bouton haut de page
@@ -44,7 +43,7 @@ $(document).ready(function() {
 });
 
 /************************************************************************************************************
- *                            FIN SECTION BOUTON HAUT DE PAGE                                               *   
+ *                            FIN SECTION BOUTON HAUT DE PAGE                                               *
  ************************************************************************************************************/
 
 // défilement fluide sur les liens HTML vers les ancres avec une durée de 1500 ms
@@ -61,7 +60,7 @@ $(function() {
     });
 });
 /************************************************************************************************************
- *                                          FIN SECTION ANCRE                                               *   
+ *                                          FIN SECTION ANCRE                                               *
  ************************************************************************************************************/
 
 // $(document).ready(function() {
@@ -124,11 +123,11 @@ $(document).ready(function() {
 // Apparition du cadre login
 $(document).ready(function() {
     $('#user').click(function() {
-        $('#cadrelogin').fadeToggle('slow');
+        $('#cadrelogin').fadeToggle(600);
     });
 });
 /************************************************************************************************************
- *                FIN SECTION AFFICHER ET CACHER LE FORMULAIRE DE CONNEXION                                 *   
+ *                FIN SECTION AFFICHER ET CACHER LE FORMULAIRE DE CONNEXION                                 *
  ************************************************************************************************************/
 
 $(document).ready(function() {
@@ -137,43 +136,82 @@ $(document).ready(function() {
     });
 });
 
-// Apparition des tooltip
-$(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-});
 
-// Carousel
 $(document).ready(function() {
+    // Apparition des tooltip
+    $('[data-toggle="tooltip"]').tooltip()
+
+    // Carousel
     $('.carousel').carousel({
         interval: 4000
     });
 });
 
+// nav-1 et nav-2
+
+$(function(){
+    $('#nav-1').hide() // On cache le menu nav-1
+});
+
+$(window).scroll(function(){
+    /*
+     * déclaration de la variable posScroll
+     * avec pour valeur $(document).scrollTop()
+     */
+    let PosScroll = $(document).scrollTop();
+
+    /*
+     * si le scroll est supérieur ou égale à 69
+     * le menu nav-1 apparait avec slideDown de 450px
+     * et on cache le menu nav-2
+     */
+    if(PosScroll >= 69){
+        $('#nav-1').slideDown(450);
+        $('#nav-2').hide();
+        $('#nav-1').css({
+            transition: "linear 0.5s ease",
+            backgroundImage: "linear-gradient( #333333, #333334)"
+        })
+        $('#nav-2').css({transition: "linear 0.2s ease"})
+    }
+    else{
+        /*
+        * si le scroll est inférieur à 69
+        * le menu nav-1 disparait avec slideUp de 450px
+        * et on affiche le menu nav-2
+        */
+
+        $('#nav-1').slideUp(450);
+        $('#nav-2').show();
+        $('#nav-1, #nav-2').css({
+            transition: "all 0.5s ease"
+        })
+    }
+});
+
 // CONTROLLE DU FORMULAIRE DE CONNEXION ET D'ENREGISTREMENT
-
-
-function isEmail(email) {
-    // LA FONCTION isEmail SERT UNIQUEMENT A VERIFIER SI UNE  
+function isEmail(element) {
+    // LA FONCTION isEmail SERT UNIQUEMENT A VERIFIER SI UNE ADRESSE
     // ELECTRONIQUE EST VALIDE. SI ELLE EST BONNE LA FONCTION RETURNE VRAI
     // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
     const VerifyEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
-    return VerifyEmail.test(email);
+    return VerifyEmail.test(element);
 }
 
-function ismypwd(passe) {
-    // LA FONCTION ismypwd SERT UNIQUEMENT A VERIFIER  
-    // UN MOT DE PASSE. LE MOT DE PASSE DOIT CONTENIR AU MINIMUM 
+function ispwd(passe) {
+    // LA FONCTION ismypwd SERT UNIQUEMENT A VERIFIER
+    // UN MOT DE PASSE. LE MOT DE PASSE DOIT CONTENIR AU MINIMUM
     // 7 CARACTERES UNE LETTRE MAJUSCULE, MINUSCULE, UN CHIFFRE
     // ET UN CARACTERE SPECIAL !, @, #, $, %,^, & ou *
     //  SI ELLE EST BONNE LA FONCTION RETURNE VRAI
     // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
-    Verifymypwd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+    Verifypwd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
     return Verifymypwd.test(passe);
 }
 
 function isPhone(phone) {
-    // LA FONCTION isPhone SERT UNIQUEMENT A VERIFIER  
-    // UN NUMERO DE TELEPHONE. LE NUMERO DE TELEPHONE DOIT ETRE 
+    // LA FONCTION isPhone SERT UNIQUEMENT A VERIFIER
+    // UN NUMERO DE TELEPHONE. LE NUMERO DE TELEPHONE DOIT ETRE
     // FORMAT: ## ## ## ## ## OU AVEC L'INDICATIF DU PAYS ## ## ## ## ## ##
     //  SI ELLE EST BONNE LA FONCTION RETURNE VRAI
     // DANS LE CAS CONTRAIRE ELLE RETURN FAUX.
@@ -238,7 +276,6 @@ function Connexion(event) {
     mypwd.style.border = '';
 }
 
-
 // Controle du formulaire d'inscription
 const register = document.getElementById('register');
 const courriel = document.getElementById('courriel');
@@ -260,14 +297,14 @@ function Inscription(event) {
         courriel.focus();
         return false;
     }
-    //  else if (!courriel.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
-    //     event.preventDefault();
-    //     courrielError.textContent = '* Adresse électronique invalide.';
-    //     courrielError.style.color = 'red';
-    //     courriel.style.border = '2px solid rgba(255, 000, 000, 0.5)';
-    //     courriel.focus();
-    //     return false;
-    // }
+     else if (!isEmail(courriel)) {
+        event.preventDefault();
+        courrielError.textContent = '* Adresse électronique invalide.';
+        courrielError.style.color = 'red';
+        courriel.style.BackgroudColor = 'rgba(255, 000, 000, 0.1)';
+        courriel.focus();
+        return false;
+    }
     courrielError.textContent = '';
     courriel.style.border = '';
 
