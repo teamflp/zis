@@ -167,24 +167,25 @@ $(window).scroll(function(){
      */
     if(PosScroll >= 69){
         $('#nav-1').slideDown(450);
-        $('#nav-2').hide();
+        $('#nav-2').fadeOut(450);
         $('#nav-1').css({
-            transition: "linear 0.5s ease",
-            backgroundImage: "linear-gradient( #333333, #333334)"
+            transition: "cubic-bezier(.32,.64,.33,.64)",
+            backgroundImage: "linear-gradient(#006fb5, #006fb5, #006fb5, #006fb5)"
         })
-        $('#nav-2').css({transition: "linear 0.2s ease"})
+        $('#nav-2').css({
+            transition: "cubic-bezier(.32,.64,.33,.64)"
+        })
     }
+    /*
+    * si le scroll est inférieur à 69
+    * le menu nav-1 disparait avec slideUp de 450px
+    * et on affiche le menu nav-2
+    */
     else{
-        /*
-        * si le scroll est inférieur à 69
-        * le menu nav-1 disparait avec slideUp de 450px
-        * et on affiche le menu nav-2
-        */
-
         $('#nav-1').slideUp(450);
-        $('#nav-2').show();
+        $('#nav-2').slideDown(450);
         $('#nav-1, #nav-2').css({
-            transition: "all 0.5s ease"
+            transition: "cubic-bezier(.32,.64,.33,.64)",
         })
     }
 });
