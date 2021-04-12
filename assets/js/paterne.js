@@ -173,7 +173,7 @@ $(window).scroll(function(){
             backgroundImage: "linear-gradient(#006fb5, #006fb5, #006fb5, #006fb5)"
         })
         $('#nav-2').css({
-            transition: "cubic-bezier(.32,.64,.33,.64)"
+            transform: "cubic-bezier(.32,.64,.33,.64)"
         })
     }
     /*
